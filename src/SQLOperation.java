@@ -3,6 +3,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Scanner;
 
 public class SQLOperation {
 	/* These were set for more flexibility and less code.
@@ -11,6 +12,10 @@ public class SQLOperation {
 	String sqlQuery = null;
 	Connection conn = null;
 	ResultSet rs = null;
+	
+	public static String requestInfo(Scanner in) {
+		return in.nextLine();		
+	}
 	
 	/* This will Connect to the given DB connection that
 	 * is currently on the DBUtil class.

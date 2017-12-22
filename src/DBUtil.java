@@ -3,12 +3,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class DBUtil {
-	/* Set all credentials, and url here for each DB 
-	 * that you need to make a connection 
-	 */
-	private static String DBUrl = "jdbc:mysql://localhost:3306/Contacts";
-	private static String username = "root";
-	private static String password = "password";
+	
 	
 	/* This was created with flexibility in mind 
 	 * This connection help to choose which DB 
@@ -19,7 +14,8 @@ public class DBUtil {
 	public static Connection getConnection(DBType dbType) throws SQLException {
 		switch (dbType) {
 		case MYSQLDB:
-			return DriverManager.getConnection(DBUrl, username, password);
+			return DriverManager.getConnection(TestMySQLConnection.DBUrl, 
+			TestMySQLConnection.username, TestMySQLConnection.password);
 		default:
 			return null;
 		}
