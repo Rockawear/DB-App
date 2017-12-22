@@ -3,5 +3,5 @@
  * class to finish the setup.
  */
 public enum DBType {
-MYSQLDB, ORADB
+	MYSQLDB, ORADB
 }

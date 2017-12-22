@@ -12,11 +12,11 @@ public class SQLOperation {
 	String sqlQuery = null;
 	Connection conn = null;
 	ResultSet rs = null;
-	
+
 	public static String requestInfo(Scanner in) {
 		return in.nextLine();		
 	}
-	
+
 	/* This will Connect to the given DB connection that
 	 * is currently on the DBUtil class.
 	 */
@@ -25,14 +25,14 @@ public class SQLOperation {
 		try {
 			//Class.forName("com.mysql.jdbc.Driver").newInstance(); 
 			conn = DBUtil.getConnection(DBType.MYSQLDB);
-				Statement stmt = conn.createStatement();
-					 rs = stmt.executeQuery(sqlQuery);
-					 System.err.println("Success!");
-			} catch (SQLException e) {
+			Statement stmt = conn.createStatement();
+			rs = stmt.executeQuery(sqlQuery);
+			System.err.println("Success!");
+		} catch (SQLException e) {
 			DBUtil.showErrorMessage(e);
 		}
 	}
-	
+
 	/* This will loop through your table and print each row
 	 * the output can be modify at your will.
 	 */
@@ -46,12 +46,12 @@ public class SQLOperation {
 			int person_contacted_number = rs.getInt("person_contacted_number");
 			String person_date_added = rs.getString("person_date_added");
 			System.out.println("Person #" + person_id + "\t FN: " + person_first_name + " \tLN: " 
-			+ person_last_name + " \t#" + person_contacted_number +  " \tLast Contacted: " 
-			+ person_date_last_contacted + " \tDate Added: " + person_date_added);
+					+ person_last_name + " \t#" + person_contacted_number +  " \tLast Contacted: " 
+					+ person_date_last_contacted + " \tDate Added: " + person_date_added);
 			//System.out.println(count);
 		}
-}
-	
+	}
+
 	/* This method will insert new rows to your table, 
 	 * however you need to modify the statements with 
 	 * new values, otherwise you will get Primary Key 
@@ -68,7 +68,7 @@ public class SQLOperation {
 		preparedStatement.setDate(6, new java.sql.Date(2017, 12, 20));
 		preparedStatement.executeUpdate();
 	}
-	
+
 	/* This will delete rows from the Contacts DB if person 
 	 * ID is set to a specific number, it won't show until 
 	 * the next time you run it. Check the DB after running
@@ -81,7 +81,7 @@ public class SQLOperation {
 		preparedStatement.executeUpdate();
 		writeResultSet();
 	}
-	
+
 	public void update() throws SQLException {
 		String sqlSts = "UPDATE Contacts.person SET person_date_last_contacted = ? WHERE person_id = 6";
 		preparedStatement = conn.prepareStatement(sqlSts);

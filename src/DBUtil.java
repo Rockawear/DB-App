@@ -3,8 +3,8 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class DBUtil {
-	
-	
+
+
 	/* This was created with flexibility in mind 
 	 * This connection help to choose which DB 
 	 * you want to use(i.e: Oracle, Derby, or 
@@ -15,12 +15,12 @@ public class DBUtil {
 		switch (dbType) {
 		case MYSQLDB:
 			return DriverManager.getConnection(TestMySQLConnection.DBUrl, 
-			TestMySQLConnection.username, TestMySQLConnection.password);
+					TestMySQLConnection.username, TestMySQLConnection.password);
 		default:
 			return null;
 		}
 	}
-	
+
 	/* This function will print descriptive error
 	 * if connection failed
 	 */
